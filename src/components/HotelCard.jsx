@@ -4,16 +4,16 @@ import services1 from "../assets/icons/services-1.svg";
 import services2 from "../assets/icons/services-2.svg";
 import services3 from "../assets/icons/services-3.svg";
 
-const Hotel = ({ hotel }) => {
+const HotelCard = ({ hotel }) => {
   return (
     <div className="hotel-card-outer">
       <div className="hotel-card">
         <div className="hotel-card-img-box">
           {/* main img */}
-          <Link to={`/hotels/${hotel.id}`}>
+          <Link to={`/hotels/${hotel._id}`}>
             <img
-              src={hotel.cardImage}
-              alt={hotel.cardImage}
+              src={hotel.images[0]}
+              alt={hotel.images[0]}
               className="hotel-card-img"
             />
           </Link>
@@ -46,8 +46,8 @@ const Hotel = ({ hotel }) => {
         </div>
 
         <div className="hotel-card-content-box">
-          <Link to={`/hotels/${hotel.id}`}>
-            <h2 className="heading-main heading-main-sm">{hotel.name}</h2>
+          <Link to={`/hotels/${hotel._id}`}>
+            <h2 className="heading-main heading-main-sm">{hotel.title}</h2>
           </Link>
           <div className="hotel-card-review">
             {/* STARS */}
@@ -138,7 +138,7 @@ const Hotel = ({ hotel }) => {
                 <circle cx="12" cy="17.6665" r="2" fill="#56CA76" />
                 <circle cx="12" cy="17.6665" r="2" stroke="#56CA76" />
               </svg>
-              Available numbers:
+              ოთახების რაოდენობა:
             </p>
             {/* room number */}
             <p className="hotel-card-room-number">{hotel.availableRooms}</p>
@@ -149,4 +149,4 @@ const Hotel = ({ hotel }) => {
   );
 };
 
-export default Hotel;
+export default HotelCard;

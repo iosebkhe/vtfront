@@ -1,21 +1,17 @@
-/*eslint no-irregular-whitespace: ["error", { "skipJSXText": true }]*/
-import prometheusCave from "./assets/images/popular/prometheus-cave.png";
-import satafliaCave from "./assets/images/popular/sataflia-cave.png";
-import tskaltuboPark from "./assets/images/popular/tskaltubo-park.png";
-import brokenLake from "./assets/images/popular/broken-lake.png";
-import cardMain1 from "./assets/images/cards/card-main-1.png";
-import cardMain2 from "./assets/images/cards/card-main-2.png";
-import cardMain3 from "./assets/images/cards/card-main-3.png";
-import cardMain4 from "./assets/images/cards/card-main-4.png";
-import guide1 from "./assets/images/guides/gidi-1-beto.jpg";
-import guide2 from "./assets/images/guides/gidi-2-tyabladze.jpg";
-import guide3 from "./assets/images/guides/gidi-3-fancxava.jpg";
-import videoBg from "./assets/images/tskaltubo-video-cover.png";
+/* eslint-disable no-irregular-whitespace */
+import prometheusCave from "../assets/images/popular/prometheus-cave.png";
+import satafliaCave from "../assets/images/popular/sataflia-cave.png";
+import tskaltuboPark from "../assets/images/popular/tskaltubo-park.png";
+import brokenLake from "../assets/images/popular/broken-lake.png";
+import cardMain1 from "../assets/images/cards/card-main-1.png";
+import cardMain2 from "../assets/images/cards/card-main-2.png";
+import cardMain3 from "../assets/images/cards/card-main-3.png";
+import cardMain4 from "../assets/images/cards/card-main-4.png";
+import guide1 from "../assets/images/guides/gidi-1-beto.jpg";
+import guide2 from "../assets/images/guides/gidi-2-tyabladze.jpg";
+import guide3 from "../assets/images/guides/gidi-3-fancxava.jpg";
+import videoBg from "../assets/images/tskaltubo-video-cover.png";
 // hotels
-import hotelArgo from "./assets/images/hotels/argo.jpg";
-import hotelGrandCentral from "./assets/images/hotels/argo.jpg";
-import hotelPlaza from "./assets/images/hotels/plaza.jpg";
-import hotelPrometeus from "./assets/images/hotels/promete.jpg";
 
 // Components
 // SLICK CSS
@@ -23,102 +19,33 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import Hotel from "./components/HotelCard";
-import PopularCard from "./components/PopularCard";
+import Hotel from "../components/HotelCard";
+import PopularCard from "../components/PopularCard";
+import Header from "../components/Header";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const hotelsData = [
-  {
-    id: "wyaltubo-plaza",
-    name: "წყალტუბო პლაზა",
-    image: hotelPlaza,
-    cardImage: hotelPlaza,
-    rating: 5,
-    services: true,
-    descriptionSmall: "წყალტუბო პლაზა, სასტუმრო წყალტუბოში",
-    descriptionFull:
-      "სასტუმრო „წყალტუბო პლაზა“ სტუმარს სთავაზობს თანამედროვე, კეთილმოწყობილ გარემოს და რაც მთავარია ჭეშმარიტად გამორჩეულ სერვისს. სასტუმრო მდებარეობს ქალაქ წყალტუბოს ცენტრში, მთავარ მოედანზე. სასტუმროსთან ახლოს მდებარეობს რამოდენიმე ბალნეოლოგიური ცენტრი, რაც წყალტუბოში დასვენებას უფრო მიმზიდველს ხდის.",
-    availableRooms: 76,
-    address: "წყალტუბო - 15ა რუსთაველის ქუჩა",
-    phone: `+995595085075`,
-    website: "https://www.tskaltuboplaza.ge/",
-    workingHours: "ყოველთვის ღია",
-    socialNetwork: [
-      {
-        fb: "https://www.facebook.com/TskaltuboPlaza/",
-        ig: "https://www.instagram.com/tskaltuboplaza_hotel/?hl=en",
-      },
-    ],
-  },
-  {
-    id: "wyaltubo-prometheus",
-    name: "სასტუმრო პრომეთე",
-    image: hotelPrometeus,
-    cardImage: hotelPrometeus,
-    rating: 5,
-    services: true,
-    descriptionSmall: "სასტუმრო “პრომეთე” ქალაქ წყალტუბოში.",
-    descriptionFull: `
-    სასტუმრო “პრომეთე” მდებარეობს ქალაქ წყალტუბოში, ცენტრალური პარკის მახლობლად. სამკურნალო წყლებიდან დაშორებულია 200მ-ით. ხოლო პრომეთეს მღვიმიდან 3 კმ.
-    ტურისტებისა და დამსვენებლების განკარგულებაში იმყოფება 46 სტანდარტული ორადგილიანი ნომერი და 3 ლუქსი. ტურისტებს და დამსვენებლებს შეუძლიათ სასტუმროს ბარ-რესტორანში დრო სასიამოვნოდ გაატარონ.
-    სამკურნალოდ ჩამოსული დამსვენებლებს კვალიფიციური მკურნალობის კურსის ჩატარება შეუძლიათ N6 ბალნეოლოგიურ აბაზანაში, სადაც მიიღებენ 10% იან ფასდაკლებას გაწეულ მომსახურეობაზე.
-    სასტუმროში ჩამოსვლისას და გამგზავრებისას შევიძლია შემოგთავაზოთ ტრანსპორტით მომსახურეობა.
-    სასტუმრო პრომეთეში ყველა პირობაა სექმნილი კომფორტული დასვენებისა და გაჯანსაღებისათვის.`,
-    availableRooms: 49,
-    address: "წყალტუბო - შოთა რუსთაველის ქუჩა N11",
-    phone: +995595077272,
-    website: "https://prometheus.ge",
-    workingHours: "ყოველთვის ღია",
-    socialNetwork: [
-      {
-        fb: "https://www.facebook.com/hotel.promete",
-      },
-    ],
-  },
-  {
-    id: "wyaltubo-argo",
-    name: "სასტუმრო არგო",
-    image: hotelArgo,
-    cardImage: hotelArgo,
-    rating: 5,
-    services: true,
-    descriptionSmall: "სასტუმრო არგო მდებარეობს წყალტუბოში.",
-    descriptionFull: `
-    სრული აღწერა სასტუმრო არგოს შესახებ`,
-    availableRooms: 49,
-    address: "წყალტუბო - შოთა რუსთაველის ქუჩა N8",
-    phone: +995593177102,
-    website: "N/A",
-    workingHours: "ყოველთვის ღია",
-    socialNetwork: [
-      {
-        fb: "https://www.facebook.com/HotelArgoTskhaltubo/",
-      },
-    ],
-  },
-  {
-    id: "wyaltubo-grand-central",
-    name: "გრანდ ცენტრალი",
-    image: hotelGrandCentral,
-    cardImage: hotelGrandCentral,
-    rating: 5,
-    services: true,
-    descriptionSmall: "სასტუმრო გრანდ ცენტრალი მდებარეობს წყალტუბოში.",
-    descriptionFull: `
-    სრული აღწერა სასტუმრო არგოს შესახებ`,
-    availableRooms: 49,
-    address: "წყალტუბო - შოთა რუსთაველის ქუჩა N8",
-    phone: +995593177102,
-    website: "N/A",
-    workingHours: "ყოველთვის ღია",
-    socialNetwork: [
-      {
-        fb: "https://www.facebook.com/HotelArgoTskhaltubo/",
-      },
-    ],
-  },
-];
 
-function App() {
+
+
+const HomePage = () => {
+  const [hotelsData, setHotelsData] = useState([]);
+
+  useEffect(() => {
+    const fetchHotelsData = async () => {
+      const hotelsUrl = '/api/hotels';
+      try {
+        const response = await axios.get(hotelsUrl);
+        setHotelsData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching hotels:', error);
+      }
+    };
+
+    fetchHotelsData();
+  }, []);
+
   // SLICK SLIDER OPTIONS
   const settings = {
     dots: true,
@@ -134,9 +61,11 @@ function App() {
     height: "200px",
   };
 
+
   return (
     <div className="main">
       <div className="hero">
+        <Header />
         {/* hero widgets */}
         <h1 className="main-title">
           კეთილი იყოს თქვენი მობრძანება
@@ -184,7 +113,7 @@ function App() {
               <div className="slider-container">
                 <Slider {...settings}>
                   {hotelsData.map((hotel) => {
-                    return <Hotel key={hotel.id} hotel={hotel} />;
+                    return <Hotel key={hotel._id} hotel={hotel} />;
                   })}
                 </Slider>
               </div>
@@ -356,11 +285,11 @@ function App() {
 
             {/* SLIDER THUMBS */}
             {/* <div className="slider-thumbs">
-              <span className="slider-thumb"></span>
-              <span className="slider-thumb slider-thumb-bigger"></span>
-              <span className="slider-thumb"></span>
-              <span className="slider-thumb"></span>
-            </div> */}
+            <span className="slider-thumb"></span>
+            <span className="slider-thumb slider-thumb-bigger"></span>
+            <span className="slider-thumb"></span>
+            <span className="slider-thumb"></span>
+          </div> */}
           </div>
         </section>
 
@@ -1688,6 +1617,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default HomePage;

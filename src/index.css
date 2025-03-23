@@ -64,7 +64,7 @@ h4,
 h5,
 h6 {
   text-transform: uppercase;
-  /* font-family: "FiraGOUPP", sans-serif; */
+  font-family: "FiraGOUPP", sans-serif;
   font-weight: 600;
 }
 
@@ -92,17 +92,18 @@ img {
 }
 
 .main-title {
-  font-family: 'Kalam', cursive;
-
+  font-family: 'MerabKostava', sans-serif !important;
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.265);
   color: white;
-  font-size: 6rem;
+  text-shadow: 2px 2px 4px #56ca76;
+  font-size: 8rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 6rem;
 }
 
 .header {
@@ -815,6 +816,9 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+
+  /* დროებით */
+  display: none;
 }
 
 .footer {
@@ -1107,4 +1111,9 @@ img {
   background-color: rgba(0, 0, 0, 0.269);
   color: red;
   font-size: 5rem;
+}
+
+
+.padding-inline-3rem {
+  padding-inline: 3rem;
 }

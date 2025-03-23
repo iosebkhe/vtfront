@@ -29,17 +29,7 @@ const NavigationExpanded = function ({ navLabel }) {
           </span>
         </a>
       </li>
-      <li className="header__nav-expanded-item">
-        <a href="" className="header__nav-expanded-link">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19.9467 14.7313L19.9231 14.6565L18.4371 10.0213C18.2737 9.51455 17.8328 9.17247 17.3388 9.17247H12.3749V5.21285L18.9272 3.84024L18.7776 3L5.07466 5.87136L5.22425 6.7116L11.5876 5.37748V9.17247H6.66304C6.16901 9.17247 5.72812 9.51241 5.56475 10.0213L4.07873 14.6565L4.05511 14.7335C4.01968 14.8468 4 14.9644 4 15.0841C4 15.2038 4.01771 15.3214 4.05511 15.4369L4.07873 15.5117L5.56475 20.1512C5.72615 20.6601 6.16901 21 6.66304 21H17.3368C17.8328 21 18.2737 20.6579 18.4351 20.1512L19.9211 15.5117L19.9448 15.4369C19.9802 15.3236 19.9999 15.206 19.9999 15.0841C20.0018 14.9622 19.9822 14.8446 19.9467 14.7313ZM8.70411 14.6544H4.91327L6.30875 10.3013C6.36189 10.1367 6.50361 10.0277 6.66304 10.0277H9.43039L8.70411 14.6544ZM9.50518 14.6458L10.2295 10.0277H13.7723L14.4967 14.6458H9.50518ZM15.2977 14.6544L14.5714 10.0277H17.3388C17.4982 10.0277 17.6419 10.1389 17.6931 10.3013L19.0886 14.6544H15.2977Z" fill="#7C7E92" />
-          </svg>
 
-          <span>
-            საბაგიროები
-          </span>
-        </a>
-      </li>
       <li className="header__nav-expanded-item">
         <a href="" className="header__nav-expanded-link">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -634,15 +624,6 @@ const NavigationExpanded = function ({ navLabel }) {
 
           <span>
             ვალუტის კონვერტაცია
-          </span>
-        </a>
-      </li>
-
-      <li className="header__nav-expanded-item">
-        <a href="" className="header__nav-expanded-link">
-
-          <span>
-            Tax Free / დღგ-ს დაბრუნება
           </span>
         </a>
       </li>
